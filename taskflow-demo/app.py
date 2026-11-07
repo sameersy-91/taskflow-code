@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Sample in-memory task storage
+# Store tasks temporarily while the application is running.
 tasks = []
 next_id = 1
 
