@@ -29,6 +29,7 @@ def create_task():
         "id": next_id,
         "title": data["title"],
         "description": data.get("description", ""),
+        "priority": data.get("priority", "medium"),
         "completed": False
     }
 
