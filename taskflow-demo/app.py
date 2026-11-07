@@ -28,6 +28,7 @@ def create_task():
     task = {
         "id": next_id,
         "title": data["title"],
+        "description": data.get("description", ""),
         "completed": False
     }
 
