@@ -9,7 +9,22 @@ next_id = 1
 
 @app.route("/tasks", methods=["GET"])
 def get_tasks():
-    """Return all tasks."""
+    """Return all tasks, optionally filtered by priority."""
+    priority = request.args.get("priority")
+
+    if priority is not None:
+        allowed_priorities = {"low", "medium", "high"}
+        if priority not in allowed_priorities:
+            return jsonify({
+                "error": "Invalid priority. Use low, medium, or high."
+            }), 400
+
+        filtered_tasks = [
+            task for task in tasks
+            if task["priority"] == priority
+        ]
+        return jsonify(filtered_tasks), 200
+
     return jsonify(tasks), 200
 
 
